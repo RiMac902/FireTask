@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get_it/get_it.dart';
-import 'package:injectable/injectable.dart';
 
 import 'core/config/app_config.dart';
 import 'core/config/routes.dart';
@@ -12,7 +10,7 @@ import 'injection.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  await configureDependencies();
+  configureDependencies();
   runApp(const MyApp());
 }
 

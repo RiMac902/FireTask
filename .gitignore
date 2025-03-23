@@ -29,9 +29,11 @@ migrate_working_dir/
 .dart_tool/
 .flutter-plugins
 .flutter-plugins-dependencies
-.pub-cache/
+.pub-cache/z
 .pub/
 /build/
+*.g.dart 
+*.freezed.dart
 
 # Symbolication related
 app.*.symbols
