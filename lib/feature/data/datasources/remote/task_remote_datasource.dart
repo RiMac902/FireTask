@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fire_task/feature/tasks/data/models/task_model.dart';
 import 'package:injectable/injectable.dart';
-import '../../models/task_model.dart';
 
 abstract class TaskRemoteDataSource {
   Future<List<TaskModel>> getTasks();
