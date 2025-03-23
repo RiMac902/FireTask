@@ -20,7 +20,6 @@ import 'feature/authentication/data/datasources/remote/auth_datasource.dart'
 import 'feature/authentication/domain/repositories/auth_repository.dart'
     as _i209;
 import 'feature/authentication/domain/usecases/signin_usecase.dart' as _i477;
-import 'feature/data/datasources/remote/task_remote_datasource.dart' as _i799;
 import 'feature/tasks/data/datasources/remote/task_remote_datasource.dart'
     as _i53;
 import 'feature/tasks/data/repositories/task_repository_impl.dart' as _i331;
@@ -53,11 +52,6 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i53.TaskRemoteDataSource>(
       () => _i53.TaskRemoteDataSourceImpl(
-        gh<_i974.FirebaseFirestore>(instanceName: 'firestore'),
-      ),
-    );
-    gh.factory<_i799.TaskRemoteDataSource>(
-      () => _i799.TaskRemoteDataSourceImpl(
         gh<_i974.FirebaseFirestore>(instanceName: 'firestore'),
       ),
     );
