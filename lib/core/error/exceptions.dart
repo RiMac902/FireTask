@@ -1,29 +1,13 @@
-class ServerException implements Exception {
-  final String message;
-  ServerException(this.message);
-}
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class CacheException implements Exception {
-  final String message;
-  CacheException(this.message);
-}
+part 'exceptions.freezed.dart';
 
-class NetworkException implements Exception {
-  final String message;
-  NetworkException(this.message);
-}
-
-class AuthException implements Exception {
-  final String message;
-  AuthException(this.message);
-}
-
-class ValidationException implements Exception {
-  final String message;
-  ValidationException(this.message);
-}
-
-class StorageException implements Exception {
-  final String message;
-  StorageException(this.message);
+@freezed
+sealed class AppException with _$AppException {
+  const factory AppException.server(String message) = ServerException;
+  const factory AppException.cache(String message) = CacheException;
+  const factory AppException.network(String message) = NetworkException;
+  const factory AppException.auth(String message) = AuthException;
+  const factory AppException.validation(String message) = ValidationException;
+  const factory AppException.storage(String message) = StorageException;
 }
