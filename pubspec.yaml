@@ -63,6 +63,7 @@ dependencies:
 
   # For Exceptions
   fpdart: ^1.1.0
+  bloc: ^9.0.0
   
 
 dev_dependencies:

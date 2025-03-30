@@ -21,6 +21,7 @@ import 'feature/authentication/data/repositories/auth_repository_impl.dart'
     as _i278;
 import 'feature/authentication/domain/repositories/auth_repository.dart'
     as _i209;
+import 'feature/authentication/domain/usecases/logout_usecase.dart' as _i14;
 import 'feature/authentication/domain/usecases/signin_usecase.dart' as _i477;
 import 'feature/tasks/data/datasources/remote/task_remote_datasource.dart'
     as _i53;
@@ -57,6 +58,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i477.SignInUseCase>(
       () => _i477.SignInUseCase(gh<_i209.AuthRepository>()),
+    );
+    gh.factory<_i14.LogoutUseCase>(
+      () => _i14.LogoutUseCase(gh<_i209.AuthRepository>()),
     );
     gh.factory<_i227.CreateTaskUseCase>(
       () => _i227.CreateTaskUseCase(gh<_i982.TaskRepository>()),
