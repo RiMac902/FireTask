@@ -1,5 +1,6 @@
 import 'package:fire_task/feature/authentication/domain/params/sign_in_params.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:injectable/injectable.dart';
 
 abstract interface class AuthRepository {
   Future<void> signInWithEmailAndPassword(SignInParams signInParams);

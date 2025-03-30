@@ -17,6 +17,8 @@ import 'package:injectable/injectable.dart' as _i526;
 import 'core/di/firebase_module.dart' as _i230;
 import 'feature/authentication/data/datasources/remote/auth_datasource.dart'
     as _i774;
+import 'feature/authentication/data/repositories/auth_repository_impl.dart'
+    as _i278;
 import 'feature/authentication/domain/repositories/auth_repository.dart'
     as _i209;
 import 'feature/authentication/domain/usecases/signin_usecase.dart' as _i477;
@@ -39,28 +41,22 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final firebaseModule = _$FirebaseModule();
-    gh.factory<_i477.SignInUseCase>(
-      () => _i477.SignInUseCase(gh<_i209.AuthRepository>()),
-    );
-    gh.singleton<_i59.FirebaseAuth>(
-      () => firebaseModule.auth,
-      instanceName: 'auth',
-    );
-    gh.singleton<_i974.FirebaseFirestore>(
-      () => firebaseModule.firestore,
-      instanceName: 'firestore',
+    gh.singleton<_i974.FirebaseFirestore>(() => firebaseModule.firestore);
+    gh.singleton<_i59.FirebaseAuth>(() => firebaseModule.auth);
+    gh.factory<_i774.AuthDataSource>(
+      () => _i774.AuthDataSourceImpl(gh<_i59.FirebaseAuth>()),
     );
     gh.factory<_i53.TaskRemoteDataSource>(
-      () => _i53.TaskRemoteDataSourceImpl(
-        gh<_i974.FirebaseFirestore>(instanceName: 'firestore'),
-      ),
-    );
-    gh.factory<_i774.AuthDataSource>(
-      () =>
-          _i774.AuthDataSourceImpl(gh<_i59.FirebaseAuth>(instanceName: 'auth')),
+      () => _i53.TaskRemoteDataSourceImpl(gh<_i974.FirebaseFirestore>()),
     );
     gh.factory<_i982.TaskRepository>(
       () => _i331.TaskRepositoryImpl(gh<_i53.TaskRemoteDataSource>()),
+    );
+    gh.factory<_i209.AuthRepository>(
+      () => _i278.AuthRepositoryImpl(gh<_i774.AuthDataSource>()),
+    );
+    gh.factory<_i477.SignInUseCase>(
+      () => _i477.SignInUseCase(gh<_i209.AuthRepository>()),
     );
     gh.factory<_i227.CreateTaskUseCase>(
       () => _i227.CreateTaskUseCase(gh<_i982.TaskRepository>()),

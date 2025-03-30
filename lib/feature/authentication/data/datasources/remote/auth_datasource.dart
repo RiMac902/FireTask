@@ -20,7 +20,7 @@ abstract interface class AuthDataSource {
 class AuthDataSourceImpl implements AuthDataSource {
   final FirebaseAuth _firebaseAuth;
 
-  AuthDataSourceImpl(@Named('auth') this._firebaseAuth);
+  AuthDataSourceImpl(this._firebaseAuth);
 
   @override
   Future<void> changeEmail(String email) async {

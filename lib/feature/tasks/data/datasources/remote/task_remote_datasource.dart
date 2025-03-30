@@ -15,8 +15,7 @@ class TaskRemoteDataSourceImpl implements TaskRemoteDataSource {
   final FirebaseFirestore _firestore;
   final String _collection = 'tasks';
 
-  @injectable
-  TaskRemoteDataSourceImpl(@Named('firestore') this._firestore);
+  TaskRemoteDataSourceImpl(this._firestore);
 
   @override
   Future<List<TaskModel>> getTasks() async {
