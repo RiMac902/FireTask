@@ -14,6 +14,9 @@ abstract interface class AuthDataSource {
   Future<void> updatePassword(String password);
   Future<void> updatedProfilePhoto(String url);
   Future<void> sendVerificationEmail([ActionCodeSettings? actionCodeSettings]);
+  Future<bool> isLoggedIn();
+  User? get currentUser;
+  Stream<User?> get authStateChanges;
 }
 
 @Injectable(as: AuthDataSource)
@@ -79,5 +82,20 @@ class AuthDataSourceImpl implements AuthDataSource {
 
   Future<void> changeDisplayName(String displayName) async {
     await _firebaseAuth.currentUser?.updateDisplayName(displayName);
+  }
+
+  @override
+  Stream<User?> get authStateChanges => _firebaseAuth.authStateChanges();
+
+  @override
+  User? get currentUser => _firebaseAuth.currentUser;
+
+  @override
+  Future<bool> isLoggedIn() async {
+    if (currentUser != null) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

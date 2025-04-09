@@ -6,11 +6,13 @@ import 'package:fire_task/feature/authentication/domain/params/sign_in_params.da
 import 'package:fire_task/feature/authentication/domain/usecases/logout_usecase.dart';
 import 'package:fire_task/feature/authentication/domain/usecases/signin_usecase.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';
 part 'auth_bloc.freezed.dart';
 
+@injectable
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final SignInUseCase _signInUseCase;
   final LogoutUseCase _logoutUseCase;
@@ -32,7 +34,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     final result = await _signInUseCase(params);
     result.fold(
       (failure) => emit(AuthState.failure(message: failure.toString())),
-      (_) => emit(const AuthState.success()),
+      (_) => emit(const AuthState.authenticated()),
     );
   }
 
@@ -41,7 +43,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     final result = await _logoutUseCase(const NoParams());
     result.fold(
       (failure) => emit(AuthState.failure(message: failure.toString())),
-      (_) => emit(const AuthState.success()),
+      (_) => emit(const AuthState.authenticated()),
     );
   }
 }

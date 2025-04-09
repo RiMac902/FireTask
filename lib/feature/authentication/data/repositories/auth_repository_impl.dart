@@ -20,9 +20,10 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<UserCredential> createUserWithEmailAndPassword({
     required String email,
     required String password,
-  }) {
-    // TODO: implement createUserWithEmailAndPassword
-    throw UnimplementedError();
+  }) async {
+    return await _authDataSource.createUserWithEmailAndPassword(
+      SignInParams(email: email, password: password),
+    );
   }
 
   @override
@@ -44,9 +45,8 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<void> signInWithEmailAndPassword(SignInParams signInParams) {
-    // TODO: implement signInWithEmailAndPassword
-    throw UnimplementedError();
+  Future<void> signInWithEmailAndPassword(SignInParams signInParams) async {
+    return await _authDataSource.signInWithEmailAndPassword(signInParams);
   }
 
   @override
@@ -66,6 +66,14 @@ class AuthRepositoryImpl implements AuthRepository {
     // TODO: implement updatedProfilePhoto
     throw UnimplementedError();
   }
+
+  @override
+  Future<bool> isLoggedIn() async {
+    return await _authDataSource.isLoggedIn();
+  }
+
+  @override
+  Stream<User?> get authStateChanges => _authDataSource.authStateChanges;
 
   // ... implementation ...
 }

@@ -1,6 +1,5 @@
 import 'package:fire_task/feature/authentication/domain/params/sign_in_params.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:injectable/injectable.dart';
 
 abstract interface class AuthRepository {
   Future<void> signInWithEmailAndPassword(SignInParams signInParams);
@@ -15,4 +14,6 @@ abstract interface class AuthRepository {
   Future<void> updatePassword(String password);
   Future<void> updatedProfilePhoto(String url);
   Future<void> sendVerificationEmail([ActionCodeSettings? actionCodeSettings]);
+  Future<bool> isLoggedIn();
+  Stream<User?> get authStateChanges;
 }
