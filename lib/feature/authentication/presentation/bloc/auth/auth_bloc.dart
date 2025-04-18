@@ -36,6 +36,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           _initializeAuthState();
       }
     });
+
+    _initializeAuthState();
   }
 
   void _initializeAuthState() {
@@ -43,7 +45,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     _authStateSubscription = _authStateUseCase.call(const NoParams()).listen((
       failureOrUser,
     ) {
-      log('failureOrUser: $failureOrUser');
       failureOrUser.fold(
         (failure) => add(AuthEvent.authStateChanged(null)),
         (user) => add(AuthEvent.authStateChanged(user)),
@@ -53,8 +54,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   void _onAuthStateChanged(User? user, Emitter<AuthState> emit) {
     if (user != null) {
+      log('user: $user');
       emit(const AuthState.authenticated());
     } else {
+      log('user is null');
       emit(const AuthState.unauthenticated());
     }
   }
@@ -65,7 +68,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     result.fold(
       (failure) => emit(AuthState.failure(message: failure.toString())),
       (_) {
-        // After successful sign in, force a refresh of the auth state
         add(const AuthEvent.initializeAuthState());
       },
     );
@@ -77,7 +79,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     result.fold(
       (failure) => emit(AuthState.failure(message: failure.toString())),
       (_) {
-        // After successful logout, force a refresh of the auth state
         add(const AuthEvent.initializeAuthState());
       },
     );

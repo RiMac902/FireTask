@@ -1,4 +1,3 @@
-import 'package:fire_task/feature/authentication/presentation/bloc/splash/splash_bloc.dart';
 import 'package:fire_task/firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
