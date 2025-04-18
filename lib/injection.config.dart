@@ -21,13 +21,13 @@ import 'feature/authentication/data/repositories/auth_repository_impl.dart'
     as _i278;
 import 'feature/authentication/domain/repositories/auth_repository.dart'
     as _i209;
+import 'feature/authentication/domain/usecases/auth_state_usecase.dart'
+    as _i274;
 import 'feature/authentication/domain/usecases/is_logged_in_usecase.dart'
     as _i550;
 import 'feature/authentication/domain/usecases/logout_usecase.dart' as _i14;
 import 'feature/authentication/domain/usecases/signin_usecase.dart' as _i477;
 import 'feature/authentication/presentation/bloc/auth/auth_bloc.dart' as _i561;
-import 'feature/authentication/presentation/bloc/splash/splash_bloc.dart'
-    as _i1006;
 import 'feature/tasks/data/datasources/remote/task_remote_datasource.dart'
     as _i53;
 import 'feature/tasks/data/repositories/task_repository_impl.dart' as _i331;
@@ -61,14 +61,17 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i209.AuthRepository>(
       () => _i278.AuthRepositoryImpl(gh<_i774.AuthDataSource>()),
     );
-    gh.factory<_i477.SignInUseCase>(
-      () => _i477.SignInUseCase(gh<_i209.AuthRepository>()),
+    gh.factory<_i274.AuthStateUseCase>(
+      () => _i274.AuthStateUseCase(gh<_i209.AuthRepository>()),
+    );
+    gh.factory<_i550.IsLoggedInUsecase>(
+      () => _i550.IsLoggedInUsecase(gh<_i209.AuthRepository>()),
     );
     gh.factory<_i14.LogoutUseCase>(
       () => _i14.LogoutUseCase(gh<_i209.AuthRepository>()),
     );
-    gh.factory<_i550.IsLoggedInUsecase>(
-      () => _i550.IsLoggedInUsecase(gh<_i209.AuthRepository>()),
+    gh.factory<_i477.SignInUseCase>(
+      () => _i477.SignInUseCase(gh<_i209.AuthRepository>()),
     );
     gh.factory<_i227.CreateTaskUseCase>(
       () => _i227.CreateTaskUseCase(gh<_i982.TaskRepository>()),
@@ -94,11 +97,12 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i952.UpdateTaskUseCase>(),
       ),
     );
-    gh.factory<_i1006.SplashBloc>(
-      () => _i1006.SplashBloc(gh<_i550.IsLoggedInUsecase>()),
-    );
     gh.factory<_i561.AuthBloc>(
-      () => _i561.AuthBloc(gh<_i477.SignInUseCase>(), gh<_i14.LogoutUseCase>()),
+      () => _i561.AuthBloc(
+        gh<_i477.SignInUseCase>(),
+        gh<_i14.LogoutUseCase>(),
+        gh<_i274.AuthStateUseCase>(),
+      ),
     );
     return this;
   }
