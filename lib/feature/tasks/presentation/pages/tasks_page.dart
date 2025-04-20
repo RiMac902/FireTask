@@ -1,9 +1,9 @@
 import 'package:fire_task/feature/tasks/domain/entities/task_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../bloc/task/task_bloc.dart';
-import '../../widgets/common/loading_indicator.dart';
-import '../../widgets/common/error_view.dart';
+import '../bloc/task/task_bloc.dart';
+import '../widgets/loading_indicator.dart';
+import '../widgets/error_view.dart';
 
 class TasksPage extends StatelessWidget {
   const TasksPage({super.key});
