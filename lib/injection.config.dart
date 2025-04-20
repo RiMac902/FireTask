@@ -48,9 +48,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i106.DashboardDataSource>(
       () => _i106.DashboardRepositoryImpl(gh<_i974.FirebaseFirestore>()),
     );
-    gh.factory<_i106.DashboardDataSource>(
-      () => _i106.DashboardRepositoryImpl(gh<_i974.FirebaseFirestore>()),
-    );
     gh.factory<_i774.AuthDataSource>(
       () => _i774.AuthDataSourceImpl(gh<_i59.FirebaseAuth>()),
     );
