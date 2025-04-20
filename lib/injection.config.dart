@@ -33,6 +33,28 @@ import 'feature/dashboard/data/repositories/dashboard_repository_impl.dart'
     as _i612;
 import 'feature/dashboard/domain/repositories/dashboard_repository.dart'
     as _i1053;
+import 'feature/dashboard/domain/usecases/add_member_usecase.dart' as _i946;
+import 'feature/dashboard/domain/usecases/create_board_usecase.dart' as _i333;
+import 'feature/dashboard/domain/usecases/create_project_usecase.dart'
+    as _i1040;
+import 'feature/dashboard/domain/usecases/create_task_usecase.dart' as _i505;
+import 'feature/dashboard/domain/usecases/delete_board_usecase.dart' as _i113;
+import 'feature/dashboard/domain/usecases/delete_project_usecase.dart' as _i767;
+import 'feature/dashboard/domain/usecases/delete_task_usecase.dart' as _i659;
+import 'feature/dashboard/domain/usecases/get_boards_usecase.dart' as _i134;
+import 'feature/dashboard/domain/usecases/get_projects_usecase.dart' as _i1029;
+import 'feature/dashboard/domain/usecases/get_tasks_usecase.dart' as _i1020;
+import 'feature/dashboard/domain/usecases/move_task_usecase.dart' as _i560;
+import 'feature/dashboard/domain/usecases/remove_member_usecase.dart' as _i992;
+import 'feature/dashboard/domain/usecases/reorder_columns_usecase.dart'
+    as _i184;
+import 'feature/dashboard/domain/usecases/reorder_tasks_usecase.dart' as _i211;
+import 'feature/dashboard/domain/usecases/update_board_usecase.dart' as _i77;
+import 'feature/dashboard/domain/usecases/update_project_usecase.dart' as _i498;
+import 'feature/dashboard/domain/usecases/update_task_usecase.dart' as _i435;
+import 'feature/dashboard/domain/usecases/watch_boards_usecase.dart' as _i668;
+import 'feature/dashboard/domain/usecases/watch_projects_usecase.dart' as _i260;
+import 'feature/dashboard/domain/usecases/watch_tasks_usecase.dart' as _i414;
 import 'feature/dashboard/presentation/bloc/dashboard_bloc.dart' as _i481;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -56,6 +78,66 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i481.DashboardBloc>(
       () => _i481.DashboardBloc(gh<_i1053.DashboardRepository>()),
+    );
+    gh.factory<_i946.AddMemberUseCase>(
+      () => _i946.AddMemberUseCase(gh<_i1053.DashboardRepository>()),
+    );
+    gh.factory<_i333.CreateBoardUseCase>(
+      () => _i333.CreateBoardUseCase(gh<_i1053.DashboardRepository>()),
+    );
+    gh.factory<_i1040.CreateProjectUseCase>(
+      () => _i1040.CreateProjectUseCase(gh<_i1053.DashboardRepository>()),
+    );
+    gh.factory<_i505.CreateTaskUseCase>(
+      () => _i505.CreateTaskUseCase(gh<_i1053.DashboardRepository>()),
+    );
+    gh.factory<_i113.DeleteBoardUseCase>(
+      () => _i113.DeleteBoardUseCase(gh<_i1053.DashboardRepository>()),
+    );
+    gh.factory<_i767.DeleteProjectUseCase>(
+      () => _i767.DeleteProjectUseCase(gh<_i1053.DashboardRepository>()),
+    );
+    gh.factory<_i659.DeleteTaskUseCase>(
+      () => _i659.DeleteTaskUseCase(gh<_i1053.DashboardRepository>()),
+    );
+    gh.factory<_i134.GetBoardsUseCase>(
+      () => _i134.GetBoardsUseCase(gh<_i1053.DashboardRepository>()),
+    );
+    gh.factory<_i1029.GetProjectsUseCase>(
+      () => _i1029.GetProjectsUseCase(gh<_i1053.DashboardRepository>()),
+    );
+    gh.factory<_i1020.GetTasksUseCase>(
+      () => _i1020.GetTasksUseCase(gh<_i1053.DashboardRepository>()),
+    );
+    gh.factory<_i560.MoveTaskUseCase>(
+      () => _i560.MoveTaskUseCase(gh<_i1053.DashboardRepository>()),
+    );
+    gh.factory<_i992.RemoveMemberUseCase>(
+      () => _i992.RemoveMemberUseCase(gh<_i1053.DashboardRepository>()),
+    );
+    gh.factory<_i184.ReorderColumnsUseCase>(
+      () => _i184.ReorderColumnsUseCase(gh<_i1053.DashboardRepository>()),
+    );
+    gh.factory<_i211.ReorderTasksUseCase>(
+      () => _i211.ReorderTasksUseCase(gh<_i1053.DashboardRepository>()),
+    );
+    gh.factory<_i77.UpdateBoardUseCase>(
+      () => _i77.UpdateBoardUseCase(gh<_i1053.DashboardRepository>()),
+    );
+    gh.factory<_i498.UpdateProjectUseCase>(
+      () => _i498.UpdateProjectUseCase(gh<_i1053.DashboardRepository>()),
+    );
+    gh.factory<_i435.UpdateTaskUseCase>(
+      () => _i435.UpdateTaskUseCase(gh<_i1053.DashboardRepository>()),
+    );
+    gh.factory<_i668.WatchBoardsUseCase>(
+      () => _i668.WatchBoardsUseCase(gh<_i1053.DashboardRepository>()),
+    );
+    gh.factory<_i260.WatchProjectsUseCase>(
+      () => _i260.WatchProjectsUseCase(gh<_i1053.DashboardRepository>()),
+    );
+    gh.factory<_i414.WatchTasksUseCase>(
+      () => _i414.WatchTasksUseCase(gh<_i1053.DashboardRepository>()),
     );
     gh.factory<_i209.AuthRepository>(
       () => _i278.AuthRepositoryImpl(gh<_i774.AuthDataSource>()),
