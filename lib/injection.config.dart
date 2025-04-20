@@ -34,16 +34,6 @@ import 'feature/dashboard/data/repositories/dashboard_repository_impl.dart'
 import 'feature/dashboard/domain/repositories/dashboard_repository.dart'
     as _i1053;
 import 'feature/dashboard/presentation/bloc/dashboard_bloc.dart' as _i481;
-import 'feature/tasks/data/datasources/remote/task_remote_datasource.dart'
-    as _i53;
-import 'feature/tasks/data/repositories/task_repository_impl.dart' as _i331;
-import 'feature/tasks/domain/repositories/task_repository.dart' as _i982;
-import 'feature/tasks/domain/usecases/create_task_usecase.dart' as _i227;
-import 'feature/tasks/domain/usecases/delete_task_usecase.dart' as _i691;
-import 'feature/tasks/domain/usecases/get_task_usecase.dart' as _i789;
-import 'feature/tasks/domain/usecases/get_tasks_usecase.dart' as _i493;
-import 'feature/tasks/domain/usecases/update_task_usecase.dart' as _i952;
-import 'feature/tasks/presentation/bloc/task/task_bloc.dart' as _i459;
 
 extension GetItInjectableX on _i174.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -64,14 +54,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i1053.DashboardRepository>(
       () => _i612.DashboardRepositoryImpl(gh<_i106.DashboardDataSource>()),
     );
-    gh.factory<_i53.TaskRemoteDataSource>(
-      () => _i53.TaskRemoteDataSourceImpl(gh<_i974.FirebaseFirestore>()),
-    );
     gh.factory<_i481.DashboardBloc>(
       () => _i481.DashboardBloc(gh<_i1053.DashboardRepository>()),
-    );
-    gh.factory<_i982.TaskRepository>(
-      () => _i331.TaskRepositoryImpl(gh<_i53.TaskRemoteDataSource>()),
     );
     gh.factory<_i209.AuthRepository>(
       () => _i278.AuthRepositoryImpl(gh<_i774.AuthDataSource>()),
@@ -87,30 +71,6 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i477.SignInUseCase>(
       () => _i477.SignInUseCase(gh<_i209.AuthRepository>()),
-    );
-    gh.factory<_i227.CreateTaskUseCase>(
-      () => _i227.CreateTaskUseCase(gh<_i982.TaskRepository>()),
-    );
-    gh.factory<_i691.DeleteTaskUseCase>(
-      () => _i691.DeleteTaskUseCase(gh<_i982.TaskRepository>()),
-    );
-    gh.factory<_i493.GetTasksUseCase>(
-      () => _i493.GetTasksUseCase(gh<_i982.TaskRepository>()),
-    );
-    gh.factory<_i789.GetTaskUseCase>(
-      () => _i789.GetTaskUseCase(gh<_i982.TaskRepository>()),
-    );
-    gh.factory<_i952.UpdateTaskUseCase>(
-      () => _i952.UpdateTaskUseCase(gh<_i982.TaskRepository>()),
-    );
-    gh.factory<_i459.TaskBloc>(
-      () => _i459.TaskBloc(
-        gh<_i227.CreateTaskUseCase>(),
-        gh<_i691.DeleteTaskUseCase>(),
-        gh<_i789.GetTaskUseCase>(),
-        gh<_i493.GetTasksUseCase>(),
-        gh<_i952.UpdateTaskUseCase>(),
-      ),
     );
     gh.factory<_i561.AuthBloc>(
       () => _i561.AuthBloc(

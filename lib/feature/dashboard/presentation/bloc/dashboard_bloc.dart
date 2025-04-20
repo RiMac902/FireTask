@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:fire_task/feature/dashboard/domain/entities/board/board_entity.dart';
 import 'package:fire_task/feature/dashboard/domain/entities/project/project_entity.dart';
-import 'package:fire_task/feature/tasks/domain/entities/task_entity.dart';
+import 'package:fire_task/feature/dashboard/domain/entities/task/task_entity.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';

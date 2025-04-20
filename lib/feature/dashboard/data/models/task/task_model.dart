@@ -1,4 +1,4 @@
-import 'package:fire_task/feature/tasks/domain/entities/task_entity.dart';
+import 'package:fire_task/feature/dashboard/domain/entities/task/task_entity.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'task_model.freezed.dart';
@@ -26,16 +26,14 @@ abstract class TaskModel with _$TaskModel {
 extension TaskModelMapper on TaskModel {
   TaskEntity toEntity() => TaskEntity(
     id: id,
-
     title: title,
     description: description,
-
     dueDate: dueDate,
-
     createdAt: createdAt,
     updatedAt: updatedAt,
-    status: '',
-    assignedTo: '',
-    priority: '',
+    boardId: boardId,
+    columnId: columnId,
+    priority: priority,
+    assigneeIds: assigneeIds,
   );
 }

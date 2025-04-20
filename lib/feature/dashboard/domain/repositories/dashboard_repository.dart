@@ -1,7 +1,7 @@
 import 'package:fire_task/core/error/failures.dart';
 import 'package:fire_task/feature/dashboard/domain/entities/board/board_entity.dart';
 import 'package:fire_task/feature/dashboard/domain/entities/project/project_entity.dart';
-import 'package:fire_task/feature/tasks/domain/entities/task_entity.dart';
+import 'package:fire_task/feature/dashboard/domain/entities/task/task_entity.dart';
 import 'package:fpdart/fpdart.dart';
 
 abstract interface class DashboardRepository {
