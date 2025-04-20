@@ -1,33 +1,33 @@
 import 'package:fire_task/core/error/failures.dart';
 import 'package:fire_task/core/usecases/usecase.dart';
-import 'package:fire_task/feature/dashboard/domain/entities/project/project_entity.dart';
+import 'package:fire_task/feature/dashboard/domain/entities/task/task_entity.dart';
 import 'package:fire_task/feature/dashboard/domain/repositories/dashboard_repository.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
-class WatchProjectsUseCase
-    implements StreamUseCase<List<ProjectEntity>, NoParams> {
+class WatchAllBoardTasksUseCase
+    implements StreamUseCase<List<TaskEntity>, String> {
   final DashboardRepository _repository;
 
-  WatchProjectsUseCase(this._repository);
+  WatchAllBoardTasksUseCase(this._repository);
 
   @override
-  Stream<Either<Failure, List<ProjectEntity>>> call(NoParams params) {
+  Stream<Either<Failure, List<TaskEntity>>> call(String boardId) {
     try {
       return _repository
-          .watchProjects()
-          .map((projects) {
-            return Right<Failure, List<ProjectEntity>>(projects);
+          .watchAllBoardTasks(boardId)
+          .map((tasks) {
+            return Right<Failure, List<TaskEntity>>(tasks);
           })
           .handleError((error) {
-            return Left<Failure, List<ProjectEntity>>(
+            return Left<Failure, List<TaskEntity>>(
               Failure.server(error.toString()),
             );
           });
     } catch (e) {
       return Stream.value(
-        Left<Failure, List<ProjectEntity>>(Failure.server(e.toString())),
+        Left<Failure, List<TaskEntity>>(Failure.server(e.toString())),
       );
     }
   }
