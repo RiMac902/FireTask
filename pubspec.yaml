@@ -43,7 +43,7 @@ dependencies:
   
   # Code Generation
   freezed_annotation: ^3.0.0
-  json_annotation: ^4.8.1
+  json_annotation: ^4.9.0
   
   # Utils
   logger: ^2.0.2+1

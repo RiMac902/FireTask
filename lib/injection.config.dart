@@ -28,6 +28,12 @@ import 'feature/authentication/domain/usecases/is_logged_in_usecase.dart'
 import 'feature/authentication/domain/usecases/logout_usecase.dart' as _i14;
 import 'feature/authentication/domain/usecases/signin_usecase.dart' as _i477;
 import 'feature/authentication/presentation/bloc/auth/auth_bloc.dart' as _i561;
+import 'feature/dashboard/data/datasources/dashboard_datasource.dart' as _i106;
+import 'feature/dashboard/data/repositories/dashboard_repository_impl.dart'
+    as _i612;
+import 'feature/dashboard/domain/repositories/dashboard_repository.dart'
+    as _i1053;
+import 'feature/dashboard/presentation/bloc/dashboard_bloc.dart' as _i481;
 import 'feature/tasks/data/datasources/remote/task_remote_datasource.dart'
     as _i53;
 import 'feature/tasks/data/repositories/task_repository_impl.dart' as _i331;
@@ -49,11 +55,20 @@ extension GetItInjectableX on _i174.GetIt {
     final firebaseModule = _$FirebaseModule();
     gh.singleton<_i974.FirebaseFirestore>(() => firebaseModule.firestore);
     gh.singleton<_i59.FirebaseAuth>(() => firebaseModule.auth);
+    gh.factory<_i106.DashboardDataSource>(
+      () => _i106.DashboardRepositoryImpl(gh<_i974.FirebaseFirestore>()),
+    );
     gh.factory<_i774.AuthDataSource>(
       () => _i774.AuthDataSourceImpl(gh<_i59.FirebaseAuth>()),
     );
+    gh.factory<_i1053.DashboardRepository>(
+      () => _i612.DashboardRepositoryImpl(gh<_i106.DashboardDataSource>()),
+    );
     gh.factory<_i53.TaskRemoteDataSource>(
       () => _i53.TaskRemoteDataSourceImpl(gh<_i974.FirebaseFirestore>()),
+    );
+    gh.factory<_i481.DashboardBloc>(
+      () => _i481.DashboardBloc(gh<_i1053.DashboardRepository>()),
     );
     gh.factory<_i982.TaskRepository>(
       () => _i331.TaskRepositoryImpl(gh<_i53.TaskRemoteDataSource>()),
