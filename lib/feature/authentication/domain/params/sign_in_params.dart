@@ -4,7 +4,7 @@ part 'sign_in_params.freezed.dart';
 part 'sign_in_params.g.dart';
 
 @freezed
-sealed class SignInParams with _$SignInParams {
+abstract class SignInParams with _$SignInParams {
   const factory SignInParams({
     required String email,
     required String password,
